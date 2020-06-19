@@ -33,6 +33,29 @@ namespace ConsoleAppData.LinkedList
             Console.WriteLine("Добавим в список элемент '13' после элемента '9'");
             list.InsertAfter(9, 13);
             PrintList(list);
+
+            Console.WriteLine("Найдем в списке первый элемент '13'");
+            var a = list.FindFirst(13);
+            PrintFind(a);
+
+            Console.WriteLine("Найдем в списке первый элемент '10'");
+            var b = list.FindFirst(10);
+            PrintFind(b);
+
+        }
+
+        private static void PrintFind(Item<int> a)
+        {
+            if (a != null)
+            {
+                Console.WriteLine($"Найден элемент списка: {a.Data}");
+                Console.WriteLine($"Следующий элемент в списке: {a.Next}");
+            }
+            else
+            {
+                Console.WriteLine("Элемент в списке не найден!");
+            }
+            Console.WriteLine();
         }
 
         private static void PrintList(LinkedList<int> list)

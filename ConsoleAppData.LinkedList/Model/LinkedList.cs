@@ -83,25 +83,17 @@ namespace ConsoleAppData.LinkedList.Model
         /// <param name="data"></param>
         public void InsertAfter(T target, T data)
         {
-            if (Head != null)
+            var current = Find(target);
+            if (current != null)
             {
-                var current = Head;
-                while (current != null)
+                var item = new Item<T>(data)
                 {
-                    if (current.Data.Equals(target))
-                    {
-                        var item = new Item<T>(data)
-                        {
-                            Next = current.Next
-                        };
-                        current.Next = item;
-                        Count++;
-                        return;
-                    }
-                    current = current.Next;
-                }
-
+                    Next = current.Next
+                };
+                current.Next = item;
+                Count++;
             }
+            
         }
 
         /// <summary>
@@ -110,31 +102,28 @@ namespace ConsoleAppData.LinkedList.Model
         /// <param name="data"></param>
         public void Delete(T data)
         {
-            if (Head != null)
+
+            var current = Find(data);
+            if (current != null)
             {
-                if (Head.Data.Equals(data))
+                if(Head == current)
                 {
                     Head = Head.Next;
-                    Count--;
                 }
                 else
                 {
-                    var current = Head.Next;
-                    var previous = Head;
-                    while (current != null)
-                    {
-                        if (current.Data.Equals(data))
-                        {
-                            previous.Next = current.Next;
-                            Count--;
-                            return;
-                        }
-                        previous = current;
-                        current = current.Next;
-                    }
+                    Head.Next = current.Next;
                 }
+                Count--;
+
             }
         }
+
+        public Item<T> FindFirst(T target)
+        {
+            return Find(target);
+        }
+
 
         /// <summary>
         /// Очистить список
@@ -159,6 +148,29 @@ namespace ConsoleAppData.LinkedList.Model
             Head = item;
             Tail = item;
             Count = 1;
+        }
+
+        /// <summary>
+        /// Найти в списке указанный элемент
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        private Item<T> Find(T target)
+        {
+            if (Head != null)
+            {
+                var current = Head;
+                while (current != null)
+                {
+                    if (current.Data.Equals(target))
+                    {
+                        return current;
+
+                    }
+                    current = current.Next;
+                }
+            }
+            return null;
         }
 
         /// <summary>
