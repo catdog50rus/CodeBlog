@@ -37,7 +37,5 @@ namespace ConsoleAppData.LinkedList.Model
         {
             return Data.ToString();
         }
-
-
     }
 }

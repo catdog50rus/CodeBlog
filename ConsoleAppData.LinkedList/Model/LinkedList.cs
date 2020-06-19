@@ -7,6 +7,7 @@ namespace ConsoleAppData.LinkedList.Model
     /// </summary>
     public class LinkedList<T> : IEnumerable
     {
+        #region Поля и Конструкоры
         /// <summary>
         /// Первый элемент списка
         /// </summary>
@@ -27,7 +28,7 @@ namespace ConsoleAppData.LinkedList.Model
         /// </summary>
         public LinkedList()
         {
-            CreateNewOrDeleteAll();
+            Clear();
         }
 
         /// <summary>
@@ -38,7 +39,9 @@ namespace ConsoleAppData.LinkedList.Model
         {
             SetHeadAndTail(data);
         }
+        #endregion
 
+        #region Открытые методы
         /// <summary>
         /// Добавить элемент в конец списка
         /// </summary>
@@ -56,6 +59,48 @@ namespace ConsoleAppData.LinkedList.Model
             else
             {
                 SetHeadAndTail(data);
+            }
+        }
+
+        /// <summary>
+        /// Добавть элемент в начало списка
+        /// </summary>
+        /// <param name="data"></param>
+        public void AppendHead(T data)
+        {
+            var item = new Item<T>(data)
+            {
+                Next = Head
+            };
+            Head = item;
+            Count++;
+        }
+
+        /// <summary>
+        /// Вставить элемент в список после конкретного элемента
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="data"></param>
+        public void InsertAfter(T target, T data)
+        {
+            if (Head != null)
+            {
+                var current = Head;
+                while (current != null)
+                {
+                    if (current.Data.Equals(target))
+                    {
+                        var item = new Item<T>(data)
+                        {
+                            Next = current.Next
+                        };
+                        current.Next = item;
+                        Count++;
+                        return;
+                    }
+                    current = current.Next;
+                }
+
             }
         }
 
@@ -88,7 +133,6 @@ namespace ConsoleAppData.LinkedList.Model
                         current = current.Next;
                     }
                 }
-                
             }
         }
 
@@ -97,8 +141,13 @@ namespace ConsoleAppData.LinkedList.Model
         /// </summary>
         public void Clear()
         {
-            CreateNewOrDeleteAll();
+            Head = null;
+            Tail = null;
+            Count = 0;
         }
+        #endregion
+        
+        #region Вспомогательные методы
 
         /// <summary>
         /// Установка данных в первую ячейку
@@ -110,16 +159,6 @@ namespace ConsoleAppData.LinkedList.Model
             Head = item;
             Tail = item;
             Count = 1;
-        }
-
-        /// <summary>
-        /// Создать пустой список или очистиь содержимое
-        /// </summary>
-        private void CreateNewOrDeleteAll()
-        {
-            Head = null;
-            Tail = null;
-            Count = 0;
         }
 
         /// <summary>
@@ -142,7 +181,8 @@ namespace ConsoleAppData.LinkedList.Model
         /// <returns></returns>
         public override string ToString()
         {
-            return $"Linked List {Count} элементов";
+            return $"Linked List: {Count} элементов";
         }
+        #endregion
     }
 }
