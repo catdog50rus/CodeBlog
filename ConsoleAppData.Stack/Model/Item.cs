@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace ConsoleAppData.LinkedList.Model
+namespace ConsoleAppData.Stack.Model
 {
     /// <summary>
     /// Ячейка списка
@@ -24,7 +26,7 @@ namespace ConsoleAppData.LinkedList.Model
         /// <summary>
         /// Следующая ячейка списка
         /// </summary>
-        public Item<T> Next { get; set; }
+        public Item<T> Previous { get; set; }
 
         public Item(T data)
         {
