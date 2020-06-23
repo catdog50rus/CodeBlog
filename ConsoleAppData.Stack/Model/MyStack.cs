@@ -2,10 +2,28 @@
 
 namespace ConsoleAppData.Stack.Model
 {
+    /// <summary>
+    /// Реализация Стека на элементах модели Item
+    /// Односвязный список
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MyStack<T>
     {
+        #region Поля и конструкторы
+
+        /// <summary>
+        /// Текущий элемент Стека
+        /// </summary>
         private Item<T> _current;
+
+        /// <summary>
+        /// Счетчик количества элементов Стека
+        /// </summary>
         public int Count { get; private set; }
+
+        /// <summary>
+        /// Признак заполнения Стека
+        /// </summary>
         public bool IsEmpty => Count == 0;
 
         public MyStack() => CreateNewStack();
@@ -15,7 +33,14 @@ namespace ConsoleAppData.Stack.Model
             _current = new Item<T>(data);
             Count = 1;
         }
+        #endregion
 
+        #region Методы
+
+        /// <summary>
+        /// Добавление элемента в Стек
+        /// </summary>
+        /// <param name="data"></param>
         public void Push(T data)
         {
             var item = new Item<T>(data)
@@ -26,6 +51,10 @@ namespace ConsoleAppData.Stack.Model
             Count++;
         }
 
+        /// <summary>
+        /// Получение текущего элемента Стека и его удаление
+        /// </summary>
+        /// <returns></returns>
         public T Pop()
         {
             var item = GetItem();
@@ -34,16 +63,27 @@ namespace ConsoleAppData.Stack.Model
             return item.Data;
         }
 
+        /// <summary>
+        /// Получение текущего элемента Стека
+        /// </summary>
+        /// <returns></returns>
         public T Peek()
         {
             return GetItem().Data;
         }
 
+        /// <summary>
+        /// Очистка Стека
+        /// </summary>
         public void Clear()
         {
             CreateNewStack();
         }
 
+        /// <summary>
+        /// Получение клона текущего Стека
+        /// </summary>
+        /// <returns></returns>
         public MyStack<T> Clone()
         {
             var newStack = new MyStack<T>
@@ -54,7 +94,14 @@ namespace ConsoleAppData.Stack.Model
             };
             return newStack;
         }
+        #endregion
 
+        #region Вспомогательные методы
+
+        /// <summary>
+        /// Проверка на заполненность и получение текущего элемента Стека
+        /// </summary>
+        /// <returns></returns>
         private Item<T> GetItem()
         {
             if (!IsEmpty)
@@ -66,14 +113,26 @@ namespace ConsoleAppData.Stack.Model
                 throw new NullReferenceException("Stack empty");
             }
         }
+
+        /// <summary>
+        /// Создание/очистка Стека
+        /// </summary>
         private void CreateNewStack()
         {
-            _current = null;
+            _current = default;
             Count = 0;
         }
+
+        /// <summary>
+        /// Переопределение ToString()
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return $"Стек на LinkedList<T> с {Count} элементами";
+            if (Count > 1) return $"Стек с {Count} элементами";
+            if (Count == 1) return $"Стек с 1 элементом";
+            else return $"Стек пустой";
         }
+        #endregion
     }
 }

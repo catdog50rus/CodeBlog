@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ConsoleAppData.Stack.Model
 {
@@ -91,6 +90,10 @@ namespace ConsoleAppData.Stack.Model
             return $"Стек на List<T> с {Count} элементами";
         }
 
+        /// <summary>
+        /// Проверка на заполненность и получение последнего элемента
+        /// </summary>
+        /// <returns></returns>
         private T GetItem()
         {
             if (!IsEmpty)
@@ -104,7 +107,5 @@ namespace ConsoleAppData.Stack.Model
             }
         }
         #endregion
-
-
     }
 }

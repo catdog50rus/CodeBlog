@@ -1,15 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleAppData.Stack.Model
 {
+    /// <summary>
+    /// Реализация Стек на массиве
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MyArrayStack<T>
     {
+        #region Поля и конструкторы
+        /// <summary>
+        /// Массив данных
+        /// </summary>
         private T[] _items;
-        public int Count { get; private set; } = -1;
+
+        /// <summary>
+        /// Позиция последнего элемента
+        /// </summary>
+        private int _current =-1;
+
+        /// <summary>
+        /// Счетчик количества элементов
+        /// </summary>
+        public int Count => _current + 1;
+
+        /// <summary>
+        /// Размер Стека
+        /// </summary>
         public int Size { get; }
-        public bool IsEmpty => Count == -1;
+
+        /// <summary>
+        /// Признак пустого Стека
+        /// </summary>
+        public bool IsEmpty => _current == -1;
+
 
         public MyArrayStack(int size = 10)
         {
@@ -19,17 +43,23 @@ namespace ConsoleAppData.Stack.Model
 
         public MyArrayStack(T data, int size = 10) : this(size)
         {
-            _items[0] = data;
-            Count = 1;
+            _current = 0;
+            _items[_current] = data;
+            
         }
+        #endregion
 
+        #region Методы
+
+        /// <summary>
+        /// Добавить элемент в Стек
+        /// </summary>
+        /// <param name="data"></param>
         public void Push(T data)
         {
-            if(Count < Size)
+            if(++_current < Size)
             {
-                Count++;
-                _items[Count] = data;
-                
+                _items[_current] = data;
             }
             else
             {
@@ -45,8 +75,8 @@ namespace ConsoleAppData.Stack.Model
         {
 
             var item = GetItem();
-            _items[Count] = default;
-            Count--;
+            _items[_current] = default;
+            _current--;
             return item;
         }
 
@@ -71,22 +101,29 @@ namespace ConsoleAppData.Stack.Model
         /// Получить клон Стека
         /// </summary>
         /// <returns></returns>
-        //public T[] Clone()
-        //{
-        //    var newStack = new MyArrayStack<T>[Size];
-        //    for (int i = 0; i < Size; i++)
-        //    {
-        //        newStack[i] = _items[i];
-        //    }
-        //    return newStack;
-        //}
+        public MyArrayStack<T> Clone()
+        {
+            var newStack = new MyArrayStack<T>(Size);
+            for (int i = 0; i < Size; i++)
+            {
+                newStack._items[i] = _items[i];
+            }
+            newStack._current = _current;
+            return newStack;
+        }
+        #endregion
 
+        #region Вспомогательный методы
 
+        /// <summary>
+        /// Проверить Стек на заполненность и получить последний элемент
+        /// </summary>
+        /// <returns></returns>
         private T GetItem()
         {
             if (!IsEmpty)
             {
-                var item = _items[Count];
+                var item = _items[_current];
                 return item;
             }
             else
@@ -95,11 +132,16 @@ namespace ConsoleAppData.Stack.Model
             }
         }
 
+        /// <summary>
+        /// Переопределение ToString()
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            if (Count > 0) return $"Стек на Array<T> с {Count + 1} элементами";
-            if (Count == 0) return $"Стек на Array<T> с 1 элементом";
+            if (Count > 1) return $"Стек на Array<T> с {Count} элементами";
+            if (Count == 1) return $"Стек на Array<T> с 1 элементом";
             else return $"Стек на Array<T> пустой";
         }
+        #endregion
     }
 }

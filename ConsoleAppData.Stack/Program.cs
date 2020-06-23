@@ -1,6 +1,5 @@
 ﻿using ConsoleAppData.Stack.Model;
 using System;
-using System.Collections.Generic;
 
 namespace ConsoleAppData.Stack
 {
@@ -35,27 +34,23 @@ namespace ConsoleAppData.Stack
             Print(newMyStack);
 
 
-            MyArrayStack<int> myArrayStack = new MyArrayStack<int>(4);
+            MyArrayStack<string> myArrayStack = new MyArrayStack<string>(6);
 
-            myArrayStack.Push(1);
-            myArrayStack.Push(3);
-            myArrayStack.Push(5);
+            myArrayStack.Push("1");
+            myArrayStack.Push("3");
+            myArrayStack.Push("5");
             Print(myArrayStack);
-            //var newMyArrayStack = myArrayStack.Clone();
-            myArrayStack.Push(7);
-            Print(myArrayStack);
-            myArrayStack.Pop();
-            Print(myArrayStack);
-            myArrayStack.Pop();
-            Print(myArrayStack);
-            myArrayStack.Pop();
-            Print(myArrayStack);
-            myArrayStack.Pop();
+            var newMyArrayStack = myArrayStack.Clone();
+            
+            
+            myArrayStack.Push("7");
             Print(myArrayStack);
 
-            //Console.Write("Клонированный ");
-            //Print(newMyArrayStack);
 
+
+            Console.Write("Клонированный ");
+            newMyArrayStack.Push("new");
+            Print(newMyArrayStack);
 
         }
 
