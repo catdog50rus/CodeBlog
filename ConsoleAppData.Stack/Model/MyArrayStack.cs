@@ -104,6 +104,7 @@ namespace ConsoleAppData.Stack.Model
         public MyArrayStack<T> Clone()
         {
             var newStack = new MyArrayStack<T>(Size);
+
             for (int i = 0; i < Size; i++)
             {
                 newStack._items[i] = _items[i];

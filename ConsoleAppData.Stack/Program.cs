@@ -7,31 +7,31 @@ namespace ConsoleAppData.Stack
     {
         static void Main()
         {
-            MyEasyStack<string> myEasyStack = new MyEasyStack<string>();
+            //MyEasyStack<string> myEasyStack = new MyEasyStack<string>();
 
-            myEasyStack.Push("Hi");
-            myEasyStack.Push("Hellow");
-            myEasyStack.Push("World");
+            //myEasyStack.Push("Hi");
+            //myEasyStack.Push("Hellow");
+            //myEasyStack.Push("World");
 
-            Print(myEasyStack);
+            //Print(myEasyStack);
 
-            var newStack = myEasyStack.Clone();
-            myEasyStack.Push("People");
-            Print(myEasyStack);
-            Console.Write("Клонированный ");
-            Print(newStack);
+            //var newStack = myEasyStack.Clone();
+            //myEasyStack.Push("People");
+            //Print(myEasyStack);
+            //Console.Write("Клонированный ");
+            //Print(newStack);
 
-            MyStack<int> myStack = new MyStack<int>();
+            //MyStack<int> myStack = new MyStack<int>();
             
-            myStack.Push(1);
-            myStack.Push(3);
-            myStack.Push(5);
-            Print(myStack);
-            var newMyStack = myStack.Clone();
-            myStack.Push(7);
-            Print(myStack);
-            Console.Write("Клонированный ");
-            Print(newMyStack);
+            //myStack.Push(1);
+            //myStack.Push(3);
+            //myStack.Push(5);
+            //Print(myStack);
+            //var newMyStack = myStack.Clone();
+            //myStack.Push(7);
+            //Print(myStack);
+            //Console.Write("Клонированный ");
+            //Print(newMyStack);
 
 
             MyArrayStack<string> myArrayStack = new MyArrayStack<string>(6);

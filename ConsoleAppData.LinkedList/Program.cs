@@ -1,4 +1,7 @@
-﻿using ConsoleAppData.LinkedList.Model;
+﻿using ConsoleAppData.LinkedList.CircleLinkedList;
+using ConsoleAppData.LinkedList.Model;
+using ConsoleAppData.LinkedList.OneWayLinkedList;
+using ConsoleAppData.LinkedList.TwoWayLinkedList;
 using System;
 
 namespace ConsoleAppData.LinkedList
@@ -7,7 +10,7 @@ namespace ConsoleAppData.LinkedList
     {
         static void Main()
         {
-            var list = new LinkedList<int>
+            var list = new OneWayLinkedList<int>
             {
                 1,
                 5,
@@ -15,6 +18,26 @@ namespace ConsoleAppData.LinkedList
                 7,
                 3
             };
+
+            //var list = new TwoWayLinkedList<int>
+            //{
+            //    1,
+            //    5,
+            //    9,
+            //    7,
+            //    3
+            //};
+
+            //var list = new CircleLinkedList<int>
+            //{
+            //    1,
+            //    5,
+            //    9,
+            //    7,
+            //    3
+            //};
+
+
             Console.WriteLine("Исходный список");
             PrintList(list);
 
@@ -30,42 +53,57 @@ namespace ConsoleAppData.LinkedList
             list.AppendHead(0);
             PrintList(list);
 
+            Console.WriteLine("Удалим первый в списке элемент '0'");
+            list.Delete(0);
+            PrintList(list);
+
             Console.WriteLine("Добавим в список элемент '13' после элемента '9'");
             list.InsertAfter(9, 13);
             PrintList(list);
 
-            Console.WriteLine("Найдем в списке первый элемент '13'");
-            var a = list.FindFirst(13);
-            PrintFind(a);
+            Console.WriteLine("Найдем в списке элемент '13'");
+            PrintItem(list.FindFirst(13));
 
-            Console.WriteLine("Найдем в списке первый элемент '10'");
-            var b = list.FindFirst(10);
-            PrintFind(b);
+            //Console.WriteLine("Развернем список");
+            //var reverseList = list.Reverse();
+            //PrintList(reverseList);
+
+            //Console.WriteLine("Найдем в развернутом списке элемент '9'");
+            //PrintItem(reverseList.FindFirst(9));
+
+            Console.WriteLine("Очистим список");
+            list.Clear();
+            PrintList(list);
+
+            var nullList = new TwoWayLinkedList<int>(1);
+            nullList.Delete(1);
+            PrintList(nullList);
 
         }
 
-        private static void PrintFind(Item<int> a)
-        {
-            if (a != null)
-            {
-                Console.WriteLine($"Найден элемент списка: {a.Data}");
-                Console.WriteLine($"Следующий элемент в списке: {a.Next}");
-            }
-            else
-            {
-                Console.WriteLine("Элемент в списке не найден!");
-            }
-            Console.WriteLine();
-        }
 
-        private static void PrintList(LinkedList<int> list)
+
+        static void PrintList<T>(ILinkedListable<T> list)
         {
             Console.WriteLine(list);
             foreach (var item in list)
             {
-                Console.Write($"{item} ");
+                Console.Write($"{item}, ");
             }
             Console.WriteLine();
+            Console.WriteLine();
+        }
+
+        static void PrintItem<T>(T item)
+        {
+            if(item == null)
+            {
+                Console.WriteLine("Элемент не найден!");
+            }
+            else
+            {
+                Console.WriteLine(item);
+            }
             Console.WriteLine();
         }
     }

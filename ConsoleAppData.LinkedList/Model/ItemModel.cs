@@ -3,9 +3,9 @@
 namespace ConsoleAppData.LinkedList.Model
 {
     /// <summary>
-    /// Ячейка списка
+    /// Базовая ячейка списка
     /// </summary>
-    public class Item<T>
+    public class ItemModel<T>
     {
         private T data = default;
 
@@ -15,18 +15,13 @@ namespace ConsoleAppData.LinkedList.Model
         public T Data
         {
             get { return data; }
-            set
+            private set
             {
                 data = value ?? throw new ArgumentNullException(nameof(value));
             }
         }
 
-        /// <summary>
-        /// Следующая ячейка списка
-        /// </summary>
-        public Item<T> Next { get; set; }
-
-        public Item(T data)
+        public ItemModel(T data)
         {
             Data = data;
         }
