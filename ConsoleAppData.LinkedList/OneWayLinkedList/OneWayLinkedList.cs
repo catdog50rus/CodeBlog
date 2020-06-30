@@ -108,6 +108,7 @@ namespace ConsoleAppData.LinkedList.OneWayLinkedList
                     Head.Next = current.Next;
                 }
                 Count--;
+                if (Head == null) Tail = null;
 
             }
         }

@@ -45,24 +45,29 @@ namespace ConsoleAppData.LinkedList
             list.Add(5);
             PrintList(list);
 
-            Console.WriteLine("Удалим первый в списке элемент '5'");
+            Console.WriteLine("Удалим первый в списке элемент '1'");
+            list.Delete(1);
+            list.Delete(5);
+            list.Delete(9);
+            list.Delete(7);
+            list.Delete(3);
             list.Delete(5);
             PrintList(list);
 
-            Console.WriteLine("Добавим в начало списка элемент '0'");
-            list.AppendHead(0);
-            PrintList(list);
+            //Console.WriteLine("Добавим в начало списка элемент '0'");
+            //list.AppendHead(0);
+            //PrintList(list);
 
             Console.WriteLine("Удалим первый в списке элемент '0'");
             list.Delete(0);
             PrintList(list);
 
-            Console.WriteLine("Добавим в список элемент '13' после элемента '9'");
-            list.InsertAfter(9, 13);
-            PrintList(list);
+            //Console.WriteLine("Добавим в список элемент '13' после элемента '9'");
+            //list.InsertAfter(9, 13);
+            //PrintList(list);
 
-            Console.WriteLine("Найдем в списке элемент '13'");
-            PrintItem(list.FindFirst(13));
+            //Console.WriteLine("Найдем в списке элемент '13'");
+            //PrintItem(list.FindFirst(13));
 
             //Console.WriteLine("Развернем список");
             //var reverseList = list.Reverse();
@@ -71,13 +76,13 @@ namespace ConsoleAppData.LinkedList
             //Console.WriteLine("Найдем в развернутом списке элемент '9'");
             //PrintItem(reverseList.FindFirst(9));
 
-            Console.WriteLine("Очистим список");
-            list.Clear();
-            PrintList(list);
+            //Console.WriteLine("Очистим список");
+            //list.Clear();
+            //PrintList(list);
 
-            var nullList = new TwoWayLinkedList<int>(1);
-            nullList.Delete(1);
-            PrintList(nullList);
+            //var nullList = new TwoWayLinkedList<int>(1);
+            //nullList.Delete(1);
+            //PrintList(nullList);
 
         }
 
