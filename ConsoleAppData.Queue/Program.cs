@@ -1,5 +1,6 @@
 ﻿using ConsoleAppData.Queue.Queue;
 using System;
+using System.Collections.Generic;
 using ConsoleAppData.Queue.Model;
 using ConsoleAppData.Queue.Deque;
 
@@ -48,21 +49,34 @@ namespace ConsoleAppData.Queue
             //linkedListQueue.Clear();
             //DisplayQueue(linkedListQueue);
 
-            var listDeque = new ListDeque<int>();
-            listDeque.AddFirst(1);
-            listDeque.AddFirst(3);
-            listDeque.AddFirst(4);
-            listDeque.AddLast(6);
-            listDeque.AddLast(9);
-            DisplayItem(listDeque);
-            DisplayQueue(listDeque);
+            //var listDeque = new ListDeque<int>();
+            //listDeque.AddFirst(1);
+            //listDeque.AddFirst(3);
+            //listDeque.AddFirst(4);
+            //listDeque.AddLast(6);
+            //listDeque.AddLast(9);
+            //DisplayItem(listDeque);
+            //DisplayQueue(listDeque);
+            //Console.WriteLine();
+            //listDeque.AddLast(5);
+            //DisplayItem(listDeque);
+            //Console.WriteLine(listDeque.RemoveFirst());
+            //DisplayItem(listDeque);
+
+
+            var linkedDeque = new LinkedListDeque<int>();
+            linkedDeque.AddFirst(1);
+            linkedDeque.AddFirst(3);
+            linkedDeque.AddFirst(4);
+            linkedDeque.AddLast(6);
+            linkedDeque.AddLast(9);
+            DisplayItem(linkedDeque);
+            DisplayQueue(linkedDeque);
             Console.WriteLine();
-            listDeque.AddLast(5);
-            DisplayItem(listDeque);
-            Console.WriteLine(listDeque.RemoveFirst());
-            DisplayItem(listDeque);
-
-
+            linkedDeque.AddLast(5);
+            DisplayItem(linkedDeque);
+            Console.WriteLine(linkedDeque.RemoveFirst());
+            DisplayItem(linkedDeque);
 
         }
 
@@ -132,14 +146,7 @@ namespace ConsoleAppData.Queue
                 Console.WriteLine($"Извлечение элементов с начала очереди:");
                 for (int i = 0; i < lenght; i++)
                 {
-                    if (i == lenght - 1)
-                    {
-                        Console.Write($"{deque.RemoveLast()}");
-                    }
-                    else
-                    {
-                        Console.Write($"{deque.RemoveFirst()}, ");
-                    }
+                    Console.Write($"{deque.RemoveFirst()}, ");
 
                 }
             }

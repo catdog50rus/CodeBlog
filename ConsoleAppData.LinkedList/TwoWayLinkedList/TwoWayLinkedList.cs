@@ -9,7 +9,7 @@ namespace ConsoleAppData.LinkedList.TwoWayLinkedList
     /// </summary>
     public class TwoWayLinkedList<T> : ILinkedListable<T>
     {
-        #region Поля и Конструкоры
+        #region Поля и Конструкторы
 
         /// <summary>
         /// Первый элемент списка
@@ -37,8 +37,7 @@ namespace ConsoleAppData.LinkedList.TwoWayLinkedList
         /// <param name="data">Ячейка списка</param>
         public TwoWayLinkedList(T data)
         {
-            var item = new Item<T>(data);
-            SetHead(item);
+            SetHead(data);
         }
         #endregion
 
@@ -50,9 +49,9 @@ namespace ConsoleAppData.LinkedList.TwoWayLinkedList
         /// <param name="data">Ячейка списка</param>
         public void Add(T data)
         {
-            var item = new Item<T>(data);
             if (Tail != null)
             {
+                var item = new Item<T>(data);
                 Tail.Next = item;
                 item.Pervious = Tail;
                 Tail = item;
@@ -60,24 +59,33 @@ namespace ConsoleAppData.LinkedList.TwoWayLinkedList
             }
             else
             {
-                SetHead(item);
+                SetHead(data);
             }
         }
 
         /// <summary>
-        /// Добавть элемент в начало списка
+        /// Добавить элемент в начало списка
         /// </summary>
         /// <param name="data"></param>
         public void AppendHead(T data)
         {
-            var item = new Item<T>(data)
+            if(Head == null)
             {
-                Next = Head
-                
-            };
-            Head = item;
-            Head.Next.Pervious = Head;
-            Count++;
+                SetHead(data);
+            }
+            else
+            {
+                var item = new Item<T>(data)
+                {
+                    Next = Head
+
+                };
+                Head = item;
+                Head.Next.Pervious = Head;
+                Count++;
+            }
+            
+            
         }
 
         /// <summary>
@@ -96,37 +104,37 @@ namespace ConsoleAppData.LinkedList.TwoWayLinkedList
         /// <param name="data"></param>
         public void Delete(T data)
         {
-            var current = Find(data);
-            if (current != null)
+            if (Count > 0)
             {
-                if (Head.Equals(current))
+                var current = Find(data);
+                if (current != null)
                 {
-                    if (current.Next != null)
+                    if (Head.Equals(current))
                     {
-                        Head = Head.Next;
-                        Head.Pervious = null;
+                        RemoveFirst();
+                    }
+                    else if (Tail.Equals(current))
+                    {
+                        RemoveLast();
                     }
                     else
                     {
-                        Clear();
+                        current.Pervious.Next = current.Next;
+                        current.Next.Pervious = current.Pervious;
+                        Count--;
                     }
-                }
-                else if (Tail.Equals(current))
-                {
-                    Tail.Pervious.Next = current.Next;
-                    Tail = current.Pervious;
+
                 }
                 else
                 {
-                    current.Pervious.Next = current.Next;
-                    current.Next.Pervious = current.Pervious;
+                    throw new Exception("Элемент не найден!");
                 }
-                Count = Count == 0 ? 0 : --Count;
             }
             else
             {
-                throw new Exception("Элемент не найден!");
+                return;
             }
+
 
         }
 
@@ -179,6 +187,43 @@ namespace ConsoleAppData.LinkedList.TwoWayLinkedList
             return result;
         }
 
+        /// <summary>
+        /// Удалить последний элемент
+        /// </summary>
+        public void RemoveLast()
+        {
+            if (Count > 0)
+            {
+                if (Count == 1) Clear();
+                else
+                {
+                    var current = Tail;
+                    Tail.Pervious.Next = current.Next;
+                    Tail = current.Pervious;
+                    Count--;
+                }
+            }
+            else { return; }
+        }
+
+        /// <summary>
+        /// Удалить первый элемент
+        /// </summary>
+        public void RemoveFirst()
+        {
+            if (Count > 0)
+            {
+                if (Count == 1) Clear();
+                else
+                {
+                    Head = Head.Next;
+                    Head.Pervious = null;
+                    Count--;
+                }
+            }
+            else { return; }
+        }
+
         #endregion
 
         #region Вспомогательные методы
@@ -187,8 +232,9 @@ namespace ConsoleAppData.LinkedList.TwoWayLinkedList
         /// Установка данных в первую ячейку
         /// </summary>
         /// <param name="data"></param>
-        private void SetHead(Item<T> item)
+        private void SetHead(T data)
         {
+            var item = new Item<T>(data);
             Head = item;
             Tail = item;
             Count = 1;

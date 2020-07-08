@@ -12,7 +12,7 @@ namespace ConsoleAppData.LinkedList.Model
         public void Add(T data);
 
         /// <summary>
-        /// Добавть элемент в начало списка
+        /// Добавить элемент в начало списка
         /// </summary>
         /// <param name="data"></param>
         public void AppendHead(T data);

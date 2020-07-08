@@ -66,7 +66,7 @@ namespace ConsoleAppData.LinkedList.OneWayLinkedList
         }
 
         /// <summary>
-        /// Добавть элемент в начало списка
+        /// Добавить элемент в начало списка
         /// </summary>
         /// <param name="data"></param>
         public void AppendHead(T data)
@@ -143,6 +143,7 @@ namespace ConsoleAppData.LinkedList.OneWayLinkedList
 
         }
 
+        
         #endregion
 
         #region Вспомогательные методы

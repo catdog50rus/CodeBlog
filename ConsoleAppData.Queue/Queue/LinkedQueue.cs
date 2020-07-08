@@ -8,7 +8,7 @@ using ConsoleAppData.LinkedList.OneWayLinkedList;
 namespace ConsoleAppData.Queue.Queue
 {
     /// <summary>
-    /// Очередь на Односвязнос списке.
+    /// Очередь на Односвязном списке.
     /// Реализация односвязного списка взята из соответствующего проекта
     /// </summary>
     /// <typeparam name="T"></typeparam>
