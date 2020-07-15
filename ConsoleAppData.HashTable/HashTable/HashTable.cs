@@ -59,12 +59,14 @@ namespace ConsoleAppData.HashTable.HashTable
             }
         }
 
-
-
-
         private int GetHash(TKey key)
         {
-            return Convert.ToInt32(key.ToString().Substring(0,1));
+            int keylock = 0;
+            for (int i = 0; i < key.ToString().Length; i++)
+            {
+                keylock += (int)key.ToString()[i];
+            }
+            return keylock % values.Length;
         }
 
 

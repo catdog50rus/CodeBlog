@@ -6,6 +6,7 @@ namespace ConsoleAppData.HashTable
 {
     public class Person
     {
+        public int Id { get; }
         public string Name { get; set; }
         public int Age { get; set; }
         public int Gender { get; set; }
@@ -19,16 +20,29 @@ namespace ConsoleAppData.HashTable
             Name = name;
             Age = age;
             Gender = gender;
+            Id = GetHashCode();
         }
 
         public override string ToString()
         {
-            return Name;
+            return $"{Name}, {Age} лет, {Gender} пола";
         }
 
         public override int GetHashCode()
         {
-            return Name.Length + Age + Gender * 1000 + (int)Name[0]; 
+            var nameKey = 0;
+            for (int i = 0; i < Name.Length; i++)
+            {
+                nameKey += (int)Name[i];
+            }
+            return Name.Length + Age + Gender * 10 + nameKey;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (this.ToString() == obj.ToString()) { return true; }
+            else return false;
+        }
+
     }
 }

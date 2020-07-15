@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,7 +34,7 @@ namespace ConsoleAppData.HashTable.SuperHash
 
         private int GetHash(T item)
         {
-            return item.GetHashCode() % items.Length;
+            return item.GetHashCode() % (items.Length);
         }
 
         /// <summary>
@@ -55,14 +56,12 @@ namespace ConsoleAppData.HashTable.SuperHash
                     }
                     else
                     {
-                        Console.Write($"{key}: null, ");
+                        Console.Write($"{key}: ----, ");
                     }
                 }
                 Console.WriteLine();
             }
         }
-
-
 
     }
 }

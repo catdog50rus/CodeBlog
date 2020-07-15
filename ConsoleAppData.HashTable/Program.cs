@@ -21,39 +21,50 @@ namespace ConsoleAppData.HashTable
             Console.WriteLine($"Таблица содержит значение 2? {badHashTable.Search(2)}");
             Console.WriteLine();
 
-            var hashTable = new HashTable<int, int>(100);
-            hashTable.Add(1, 1);
-            hashTable.Add(10, 10);
-            hashTable.Add(3, 100);
-            hashTable.Add(2, 1);
-            hashTable.Add(21, 10);
-            hashTable.Add(222, 100); 
-            hashTable.Add(24, 11);
-            hashTable.Add(4, 110);
-            hashTable.Add(44, 1100);
+
+            var person1 = new Person("Коля", 20);
+            var person2 = new Person("Толя", 25);
+            var person3 = new Person("Оля", 22, 1);
+            var person4 = new Person("Валя", 20, 1);
+            var person5 = new Person("Валя", 20, 0);
+            var person6 = new Person("Витя", 20, 0);
+            var hashTable = new HashTable<int, Person>(10);
+            hashTable.Add(person1.Id, person1);
+            hashTable.Add(person2.Id, person2);
+            hashTable.Add(person3.Id, person3);
+            hashTable.Add(person4.Id, person4);
+            hashTable.Add(person5.Id, person5);
+            hashTable.Add(person6.Id, person6); 
 
             hashTable.DisplayHashTable();
             Console.WriteLine();
 
-            Console.WriteLine($"Таблица содержит значение 1  по ключу 1? {hashTable.Search(1, 1)}");
-            Console.WriteLine($"Таблица содержит значение 10  по ключу 4? {hashTable.Search(4, 10)}");
+            Console.WriteLine($"Таблица содержит {person1}  по ключу {person1.Id}? {hashTable.Search(person1.Id, person1)}");
+            Console.WriteLine($"Таблица содержит {person4}  по ключу {person4.Id}? {hashTable.Search(person4.Id, person4)}");
             Console.WriteLine();
 
 
             var superHash = new SuperHash.SuperHash<Person>(100);
-            var person = new Person("Коля", 20);
+            
 
-            superHash.Add(person);
-            superHash.Add(new Person("Толя", 25));
-            superHash.Add(new Person("Оля", 22, 1));
-            superHash.Add(new Person("Валя", 20, 1));
+            superHash.Add(person1);
+            superHash.Add(person2);
+            superHash.Add(person3);
+            superHash.Add(person4);
+            superHash.Add(person5);
+            superHash.Add(person6);
+
 
             superHash.DisplayHashTable();
 
             Console.WriteLine();
 
-            Console.WriteLine($"Таблица содержит значение new Person(Коля, 20, 0)? {superHash.Search(new Person("Коля", 20, 0))}");
-            Console.WriteLine($"Таблица содержит значение Person(Коля, 20, 0)? {superHash.Search(person)}");
+
+            Console.WriteLine($"Таблица содержит значение {new Person("Коля", 20, 0)}? {superHash.Search(new Person("Коля", 20, 0))}");
+            Console.WriteLine($"Таблица содержит значение {new Person("Коля", 20, 1)}? {superHash.Search(new Person("Коля", 20, 1))}");
+            Console.WriteLine($"Таблица содержит значение {person5}? {superHash.Search(person5)}");
+
+            Console.WriteLine();
 
 
         }
