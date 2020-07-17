@@ -48,7 +48,7 @@ namespace ConsoleAppData.Dictionary.Dictionary
             //Если ключ уникальный, начинаем искать свободную ячейку слева на-право
             else
             {
-                bool placed = false;
+                bool placed;// = false;
                 ///Пытаемся установить элемент в свободную ячейку правее ячейки хеш
                 placed = SetItem(item, hash, items.Length);
                 //Если свободной ячейки не нашлось, ищем свободную ячейку левее хеш от 0

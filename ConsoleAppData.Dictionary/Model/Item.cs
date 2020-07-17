@@ -26,10 +26,7 @@ namespace ConsoleAppData.Dictionary.Model
             Key = key;
             Value = value;
         }
-        public override int GetHashCode()
-        {
-            return Key.GetHashCode();
-        }
+        public override int GetHashCode() => Key.GetHashCode();
 
         public override string ToString()
         {
