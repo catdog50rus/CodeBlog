@@ -9,7 +9,7 @@ namespace ConsoleAppData.LinkedList.CircleLinkedList
     /// <typeparam name="T"></typeparam>
     public class CircleLinkedList<T> : ILinkedListable<T>
     {
-        #region Поля и Конструкоры
+        #region Поля и Конструкторы
 
         /// <summary>
         /// Элемент списка

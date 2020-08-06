@@ -68,7 +68,8 @@ namespace ConsoleAppData.BinarySearchTree.BST
         }
 
         /// <summary>
-        /// Префиксный обход
+        /// Префиксный обход (Копирование)
+        /// Элемент / Левое поддерево / Правое поддерево
         /// </summary>
         /// <returns></returns>
         public List<T> PreOrder()
@@ -79,7 +80,8 @@ namespace ConsoleAppData.BinarySearchTree.BST
         }
 
         /// <summary>
-        /// Постфиксный обход
+        /// Постфиксный обход (Удаление)
+        /// Левое поддерево / Правое поддерево / Элемент
         /// </summary>
         /// <returns></returns>
         public List<T> PostOrder()
@@ -91,6 +93,7 @@ namespace ConsoleAppData.BinarySearchTree.BST
 
         /// <summary>
         /// Инфиксный обход (Сортировка по возрастанию)
+        /// Левое поддерево / Элемент / Правое поддерево
         /// </summary>
         /// <returns></returns>
         public List<T> InOrder()
@@ -116,7 +119,7 @@ namespace ConsoleAppData.BinarySearchTree.BST
         #region Вспомогательные методы
 
         /// <summary>
-        /// Получить количество элементов деева
+        /// Получить количество элементов дерева
         /// </summary>
         /// <returns></returns>
         public int GetCount()

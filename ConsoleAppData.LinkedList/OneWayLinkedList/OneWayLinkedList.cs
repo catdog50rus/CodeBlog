@@ -9,7 +9,7 @@ namespace ConsoleAppData.LinkedList.OneWayLinkedList
     /// <typeparam name="T"></typeparam>
     public class OneWayLinkedList<T> : ILinkedListable<T>
     {
-        #region Поля и Конструкоры
+        #region Поля и Конструкторы
         /// <summary>
         /// Первый элемент списка
         /// </summary>

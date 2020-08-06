@@ -24,6 +24,10 @@ namespace ConsoleAppData.BinarySearchTree
 
             Console.WriteLine("Бэкфиксный обход дерева");
             Print(tree.BackOrder());
+
+            Console.WriteLine("Копирование дерева и его Бэкфиксный обход");
+            var copyTree = new BSTree<int>(tree.PreOrder());
+            Print(copyTree.BackOrder());
         }
 
         static void Print<T>(List<T> tree) where T: IComparable
