@@ -10,17 +10,58 @@ namespace AlgorithmLib.Model
     /// <typeparam name="T"></typeparam>
     public class AlgorithmBase<T> where T : IComparable
     {
+        #region Поля и конструктор
+
         /// <summary>
         /// Коллекция элементов
         /// </summary>
-        public List<T> Items { get; set; }
+        public List<T> Items { get; }
 
-        public int Count => Items.Count;
+        /// <summary>
+        /// Счетчик элементов коллекции
+        /// </summary>
+        protected int Count => Items.Count;
 
+        /// <summary>
+        /// Счетчик количества выполненных замен
+        /// </summary>
+        protected int SwapCount { get; set; }
+
+        /// <summary>
+        /// Счетчик количества выполненных сравнений
+        /// </summary>
+        protected int ComparisonCount { get; set; }
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public AlgorithmBase()
         {
             Items = new List<T>();
+            SwapCount = 0;
+            ComparisonCount = 0;
         }
+
+        #endregion
+
+        #region Интерфейс
+
+        /// <summary>
+        /// Сортировка элементов
+        /// </summary>
+        public void Sort()
+        {
+            //Устанавливаем счетчики
+            SwapCount = 0;
+            ComparisonCount = 0;
+
+            //Вызываем метод сортировки
+            MakeSort();
+        }
+
+        #endregion
+
+        #region Вспомогательные методы и реализация
 
         /// <summary>
         /// Меняем элементы местами
@@ -35,15 +76,21 @@ namespace AlgorithmLib.Model
                 var temp = Items[posA];
                 Items[posA] = Items[posB];
                 Items[posB] = temp;
+
+                SwapCount++;
             }
         }
 
         /// <summary>
         /// Базовая реализация сортировки
         /// </summary>
-        public virtual void Sort()
+        protected virtual void MakeSort()
         {
             Items.Sort();
         }
+
+        #endregion
+
+
     }
 }
