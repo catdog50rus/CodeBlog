@@ -90,7 +90,5 @@ namespace AlgorithmLib.Model
         }
 
         #endregion
-
-
     }
 }

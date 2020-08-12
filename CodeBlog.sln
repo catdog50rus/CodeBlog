@@ -27,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppData.Graph", "Con
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Algorithms", "Algorithms", "{1966EDDE-1971-47DB-A6D7-98112BB0A59D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmLib", "Algorithms\AlgorithmLib\AlgorithmLib.csproj", "{091A0475-462F-4B7B-8B26-8F2CD371EEE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmLib", "Algorithms\AlgorithmLib\AlgorithmLib.csproj", "{091A0475-462F-4B7B-8B26-8F2CD371EEE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmTests", "Algorithms\AlgorithmLibTests\AlgorithmTests.csproj", "{43926BD2-E745-45F4-B672-DB9B258CB24F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmTests", "Algorithms\AlgorithmLibTests\AlgorithmTests.csproj", "{43926BD2-E745-45F4-B672-DB9B258CB24F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
