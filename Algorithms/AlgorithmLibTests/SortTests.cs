@@ -1,6 +1,7 @@
 ﻿using AlgorithmLib.BubbleSort;
 using AlgorithmLib.CoctailSort;
 using AlgorithmLib.InsertSort;
+using AlgorithmLib.ShellSort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,13 @@ namespace AlgorithmTests
         readonly InsertSort<int> insert = new InsertSort<int>();
         readonly CocktailSort<int> cocktail = new CocktailSort<int>();
         readonly BubbleSort<int> bubble = new BubbleSort<int>();
+        readonly ShellSort<int> shell = new ShellSort<int>();
 
         [TestInitialize]
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 items.Add(rnd.Next(0, 1000));
             }
@@ -32,6 +34,8 @@ namespace AlgorithmTests
             cocktail.Items.AddRange(items);
 
             bubble.Items.AddRange(items);
+
+            shell.Items.AddRange(items);
 
             items.Sort();
         }
@@ -74,6 +78,20 @@ namespace AlgorithmTests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(items[i], bubble.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void ShellSortTest()
+        {
+
+            //Act
+            shell.Sort();
+
+            //Assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(items[i], shell.Items[i]);
             }
         }
     }
