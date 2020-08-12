@@ -10,7 +10,7 @@ namespace ConsoleAppData.BinaryHeap.Heap
     /// Реализация двоичной кучи
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class Heap<T> : IBinaryHeap<T>
+    public class Heap<T> : IBinaryHeap<T>
           where T : IComparable
     {
         #region Поля и конструкторы

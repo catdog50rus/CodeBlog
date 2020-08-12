@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ConsoleAppData.BinaryHeap\ConsoleAppData.BinaryHeap.csproj" />
     <ProjectReference Include="..\..\ConsoleAppData.BinarySearchTree\ConsoleAppData.BinarySearchTree.csproj" />
   </ItemGroup>
 

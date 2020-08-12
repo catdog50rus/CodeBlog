@@ -3,6 +3,7 @@ using AlgorithmLib.CoctailSort;
 using AlgorithmLib.InsertSort;
 using AlgorithmLib.ShellSort;
 using AlgorithmLib.BinTreeSeacrhSort;
+using AlgorithmLib.BinHeapSort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace AlgorithmTests
         readonly BubbleSort<int> bubble = new BubbleSort<int>();
         readonly ShellSort<int> shell = new ShellSort<int>();
         readonly BinTreeSearchSort<int> bts = new BinTreeSearchSort<int>();
+        readonly BinHeapSort<int> heap = new BinHeapSort<int>();
 
         #region TestsInit
         [TestInitialize]
@@ -42,6 +44,7 @@ namespace AlgorithmTests
             shell.Items.AddRange(items);
 
             bts.Items.AddRange(items);
+            heap.Items.AddRange(items);
 
             items.Sort();
         }
@@ -116,6 +119,20 @@ namespace AlgorithmTests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(items[i], bts.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void BinHeapSortTest()
+        {
+
+            //Act
+            heap.Sort();
+
+            //Assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(items[i], heap.Items[i]);
             }
         }
 
