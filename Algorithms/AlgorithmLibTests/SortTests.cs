@@ -2,6 +2,7 @@
 using AlgorithmLib.CoctailSort;
 using AlgorithmLib.InsertSort;
 using AlgorithmLib.ShellSort;
+using AlgorithmLib.BinTreeSeacrhSort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -13,18 +14,21 @@ namespace AlgorithmTests
     {
         readonly Random rnd = new Random();
         readonly List<int> items = new List<int>();
+        readonly int Count = 10000;
 
         //Arrange
         readonly InsertSort<int> insert = new InsertSort<int>();
         readonly CocktailSort<int> cocktail = new CocktailSort<int>();
         readonly BubbleSort<int> bubble = new BubbleSort<int>();
         readonly ShellSort<int> shell = new ShellSort<int>();
+        readonly BinTreeSearchSort<int> bts = new BinTreeSearchSort<int>();
 
+        #region TestsInit
         [TestInitialize]
         public void Init()
         {
             items.Clear();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < Count; i++)
             {
                 items.Add(rnd.Next(0, 1000));
             }
@@ -37,9 +41,15 @@ namespace AlgorithmTests
 
             shell.Items.AddRange(items);
 
+            bts.Items.AddRange(items);
+
             items.Sort();
         }
-        
+        #endregion
+
+        #region Tests
+
+
         [TestMethod()]
         public void InsertSortTest()
         {
@@ -94,5 +104,21 @@ namespace AlgorithmTests
                 Assert.AreEqual(items[i], shell.Items[i]);
             }
         }
+
+        [TestMethod()]
+        public void BinTreeSearchSortTest()
+        {
+
+            //Act
+            bts.Sort();
+
+            //Assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(items[i], bts.Items[i]);
+            }
+        }
+
+        #endregion
     }
 }
