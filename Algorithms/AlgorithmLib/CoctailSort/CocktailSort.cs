@@ -11,6 +11,9 @@ namespace AlgorithmLib.CoctailSort
     /// <typeparam name="T"></typeparam>
     public class CocktailSort<T> : AlgorithmBase<T> where T: IComparable
     {
+        public CocktailSort() { }
+        public CocktailSort(IEnumerable<T> items) : base(items) { }
+
         protected override void MakeSort()
         {
             //Устанавливаем начальные границы
@@ -27,21 +30,20 @@ namespace AlgorithmLib.CoctailSort
                 //Проход слева направо
                 for (int i = left; i < right; i++)
                 {
-                    if (Items[i].CompareTo(Items[i + 1]) == 1)
+                    if (Compare(Items[i], Items[i+1]) == 1)
                     {
                         Swap(i, i + 1);
                     }
-                    ComparisonCount++;
                 }
                 right--;
+
                 //Проход справа налево
                 for (int i = right; i > left; i--)
                 {
-                    if (Items[i].CompareTo(Items[i - 1]) == -1)
+                    if (Compare(Items[i], Items[i - 1]) == -1)
                     {
                         Swap(i, i - 1);
                     }
-                    ComparisonCount++;
                 }
                 left++;
                 //Если новых замен не происходит

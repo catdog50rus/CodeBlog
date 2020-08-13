@@ -30,12 +30,30 @@ namespace ConsoleAppData.BinaryHeap.Heap
         /// </summary>
         public int Count => items.Count;
 
-        public Heap()
+        /// <summary>
+        /// Тип бинарный кучи
+        /// 1 возрастающий приоритет
+        /// -1 убывающий приоритет
+        /// </summary>
+        private readonly int _type = 1;
+
+        /// <summary>
+        /// Создать экземпляр бинарной кучи
+        /// </summary>
+        /// <param name="type">Тип кучи, по умолчанию приоритет возрастающий, -1 приоритет убывающий</param>
+        public Heap(int type = 1)
         {
             items = new List<T>();
+            if (type == -1) _type = -1;
+            else _type = 1;
         }
 
-        public Heap(IEnumerable<T> list) : this()
+        /// <summary>
+        /// Создать экземпляр бинарной кучи из коллекции
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="type">Тип кучи, по умолчанию приоритет возрастающий, -1 приоритет убывающий</param>
+        public Heap(IEnumerable<T> list, int type = 1) : this(type)
         {
             items.AddRange(list);
             for (int i = Count; i >= 0; i--)
@@ -70,7 +88,7 @@ namespace ConsoleAppData.BinaryHeap.Heap
             items.Add(item);
             var currentIndex = Count - 1;
             var parentIndex = GetParentIndex(currentIndex);
-            while (currentIndex > 0 && items[parentIndex].CompareTo(item) == -1)
+            while (currentIndex > 0 && items[parentIndex].CompareTo(item) == -_type)
             {
                 Swap(currentIndex, parentIndex);
                 currentIndex = parentIndex;
@@ -91,6 +109,17 @@ namespace ConsoleAppData.BinaryHeap.Heap
             return result;
         }
 
+        public List<T> GetList()
+        {
+            int lenght = Count;
+            List<T> result = new List<T>();
+            for (int i = 0; i < lenght; i++)
+            {
+                result.Add(GetMax());
+            }
+            return result;
+        }
+
         #endregion
 
         #region Вспомогательные методы и реализация
@@ -108,11 +137,11 @@ namespace ConsoleAppData.BinaryHeap.Heap
                 leftIndex = 2 * index + 1;
                 rightIndex = 2 * index + 2;
 
-                if (leftIndex < Count && items[leftIndex].CompareTo(items[maxIndex]) == 1)
+                if (leftIndex < Count && items[leftIndex].CompareTo(items[maxIndex]) == _type)
                 {
                     maxIndex = leftIndex;
                 }
-                if (rightIndex < Count && items[rightIndex].CompareTo(items[maxIndex]) == 1)
+                if (rightIndex < Count && items[rightIndex].CompareTo(items[maxIndex]) == _type)
                 {
                     maxIndex = rightIndex;
                 }

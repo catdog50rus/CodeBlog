@@ -11,6 +11,9 @@ namespace AlgorithmLib.BubbleSort
     /// <typeparam name="T"></typeparam>
     public class BubbleSort<T> : AlgorithmBase<T> where T: IComparable
     {
+        public BubbleSort() { }
+        public BubbleSort(IEnumerable<T> items) : base(items) { }
+
         protected override void MakeSort()
         {
             int count = Count;
@@ -25,11 +28,10 @@ namespace AlgorithmLib.BubbleSort
                     
                     T a = Items[i];
                     T b = Items[i + 1];
-                    if (a.CompareTo(b) == 1)
+                    if (Compare(a,b) == 1)
                     {
                         //Вызов метода перестановки местами элементов из базового класса
                         Swap(i, i + 1);
-                        ComparisonCount++;
                     }
                     
                 }

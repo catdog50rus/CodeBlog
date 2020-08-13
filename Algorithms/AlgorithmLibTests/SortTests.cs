@@ -4,6 +4,8 @@ using AlgorithmLib.InsertSort;
 using AlgorithmLib.ShellSort;
 using AlgorithmLib.BinTreeSeacrhSort;
 using AlgorithmLib.BinHeapSort;
+using AlgorithmLib.SelectionSort;
+using AlgorithmLib.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,8 @@ namespace AlgorithmTests
         readonly ShellSort<int> shell = new ShellSort<int>();
         readonly BinTreeSearchSort<int> bts = new BinTreeSearchSort<int>();
         readonly BinHeapSort<int> heap = new BinHeapSort<int>();
+        readonly AlgorithmBase<int> baseSort = new AlgorithmBase<int>();
+        readonly SelectionSort<int> selection = new SelectionSort<int>();
 
         #region TestsInit
         [TestInitialize]
@@ -32,7 +36,7 @@ namespace AlgorithmTests
             items.Clear();
             for (int i = 0; i < Count; i++)
             {
-                items.Add(rnd.Next(0, 1000));
+                items.Add(rnd.Next(0, 10000));
             }
 
             insert.Items.AddRange(items);
@@ -45,6 +49,8 @@ namespace AlgorithmTests
 
             bts.Items.AddRange(items);
             heap.Items.AddRange(items);
+            baseSort.Items.AddRange(items);
+            selection.Items.AddRange(items);
 
             items.Sort();
         }
@@ -133,6 +139,34 @@ namespace AlgorithmTests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(items[i], heap.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void BaseSortTest()
+        {
+
+            //Act
+            baseSort.Sort();
+
+            //Assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(items[i], baseSort.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void SelectionSortTest()
+        {
+
+            //Act
+            selection.Sort();
+
+            //Assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(items[i], selection.Items[i]);
             }
         }
 

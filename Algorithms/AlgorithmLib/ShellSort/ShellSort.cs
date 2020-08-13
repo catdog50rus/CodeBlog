@@ -5,11 +5,14 @@ using AlgorithmLib.Model;
 
 namespace AlgorithmLib.ShellSort
 {
+    /// <summary>
+    /// Реализация алгоритма сортировки Шелла
+    /// </summary>
     public class ShellSort<T> : AlgorithmBase<T> where T : IComparable
     {
-        /// <summary>
-        /// Реализация алгоритма сортировки Шелла
-        /// </summary>
+        public ShellSort() { }
+        public ShellSort(IEnumerable<T> items) : base(items) { }
+
         protected override void MakeSort()
         {
             //Находим шаг
@@ -23,12 +26,11 @@ namespace AlgorithmLib.ShellSort
                 {
                     int j = i;
                     //Сортируем под коллекции
-                    while ((j >= step) && Items[j].CompareTo(Items[j - step]) == -1)
+                    while ((j >= step) && Compare(Items[j], Items[j - step]) == -1)
                     {
                         Swap(j, j - step);
                         j -= step;
                     }
-                    ComparisonCount++;
                 }
                 step /= 2;
             }

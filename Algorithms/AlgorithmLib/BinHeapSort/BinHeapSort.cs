@@ -13,23 +13,21 @@ namespace AlgorithmLib.BinHeapSort
     /// <typeparam name="T"></typeparam>
     public class BinHeapSort<T> : AlgorithmBase<T> where T : IComparable
     {
+        public BinHeapSort() { }
+        public BinHeapSort(IEnumerable<T> items) : base(items) { }
+
         protected override void MakeSort()
         {
-            Heap<T> heap = new Heap<T>(Items);
+            //Создаем экземпляр бинарной кучи с убывающим приоритетом
+            //И передаем в нее коллекцию
+            Heap<T> heap = new Heap<T>(Items, -1);
             //Создать экземпляр массива для отсортированной коллекции
-            T [] sorted = new T[Count];
-            int j = Count - 1;
-            //Запускаем цикл сортировки
-            //Получаем максимальные значения и записываем их в массив справа налево
-            for (int i = 0; i < Count; i++)
-            {
-                sorted[j] = heap.GetMax();
-                j--;
-            }
-            Items.Clear();
-            //Возвращаем в коллекцию отсортированный массив
-            Items.AddRange(sorted);
+            List<T> sorted = new List<T>();
+            sorted.AddRange(heap.GetList());
 
+            Items.Clear();
+            //Возвращаем в коллекцию отсортированный список
+            Items.AddRange(sorted);
         }
     }
 }

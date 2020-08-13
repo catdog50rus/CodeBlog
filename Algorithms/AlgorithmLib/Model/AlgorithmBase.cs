@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AlgorithmLib.Model
 {
@@ -40,6 +39,10 @@ namespace AlgorithmLib.Model
             Items = new List<T>();
             SwapCount = 0;
             ComparisonCount = 0;
+        }
+        public AlgorithmBase(IEnumerable<T> items) : this()
+        {
+            Items.AddRange(items);
         }
 
         #endregion
@@ -87,6 +90,12 @@ namespace AlgorithmLib.Model
         protected virtual void MakeSort()
         {
             Items.Sort();
+        }
+
+        protected int Compare(T a, T b)
+        {
+            ComparisonCount++;
+            return a.CompareTo(b);
         }
 
         #endregion
