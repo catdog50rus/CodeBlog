@@ -9,6 +9,7 @@ using AlgorithmLib.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using AlgorithmLib.GnomeSort;
 
 namespace AlgorithmTests
 {
@@ -28,6 +29,7 @@ namespace AlgorithmTests
         readonly BinHeapSort<int> heap = new BinHeapSort<int>();
         readonly AlgorithmBase<int> baseSort = new AlgorithmBase<int>();
         readonly SelectionSort<int> selection = new SelectionSort<int>();
+        readonly GnomeSort<int> gnome = new GnomeSort<int>();
 
         #region TestsInit
         [TestInitialize]
@@ -51,6 +53,7 @@ namespace AlgorithmTests
             heap.Items.AddRange(items);
             baseSort.Items.AddRange(items);
             selection.Items.AddRange(items);
+            gnome.Items.AddRange(items);
 
             items.Sort();
         }
@@ -167,6 +170,20 @@ namespace AlgorithmTests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(items[i], selection.Items[i]);
+            }
+        }
+        
+        [TestMethod()]
+        public void GnomeSortTest()
+        {
+
+            //Act
+            gnome.Sort();
+
+            //Assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(items[i], gnome.Items[i]);
             }
         }
 
