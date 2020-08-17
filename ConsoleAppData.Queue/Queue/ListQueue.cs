@@ -25,7 +25,7 @@ namespace ConsoleAppData.Queue.Queue
         /// <summary>
         /// Счетчик элементов очереди
         /// </summary>
-        private int Count => items.Count;
+        public int Count => items.Count;
 
         /// <summary>
         /// Конструкторы

@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ConsoleAppData.BinaryHeap\ConsoleAppData.BinaryHeap.csproj" />
     <ProjectReference Include="..\..\ConsoleAppData.BinarySearchTree\ConsoleAppData.BinarySearchTree.csproj" />
+    <ProjectReference Include="..\..\ConsoleAppData.Queue\ConsoleAppData.Queue.csproj" />
   </ItemGroup>
 
 </Project>
