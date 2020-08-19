@@ -11,6 +11,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using AlgorithmLib.GnomeSort;
+using AlgorithmLib.MergeSort;
 
 namespace AlgorithmTests
 {
@@ -19,7 +20,7 @@ namespace AlgorithmTests
     {
         readonly Random rnd = new Random();
         readonly List<int> items = new List<int>();
-        readonly int Count = 1000000;
+        readonly int Count = 10000;
 
 
         #region TestsInit
@@ -29,7 +30,7 @@ namespace AlgorithmTests
             items.Clear();
             for (int i = 0; i < Count; i++)
             {
-                items.Add(rnd.Next(0, 10000));
+                items.Add(rnd.Next(0, 10));
             }
 
         }
@@ -221,6 +222,23 @@ namespace AlgorithmTests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(items[i], radixMSD.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void MergeSortTest()
+        {
+
+            //Act
+            var merge = new MergeSort<int>();
+            merge.Items.AddRange(items);
+            merge.Sort();
+            items.Sort();
+
+            //Assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(items[i], merge.Items[i]);
             }
         }
 
