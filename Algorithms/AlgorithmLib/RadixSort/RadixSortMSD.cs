@@ -7,7 +7,7 @@ namespace AlgorithmLib.RadixSort
     /// Реализация по-разрядной сортировки начиная со старшего разряда
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class RadixSortMSD<T> : RadixSort<T> where T : IComparable
+    public class RadixSortMSD<T> : BaseRadixSort<T> where T : IComparable
     {
         /// <summary>
         /// Максимальное количество разрядов в коллекции

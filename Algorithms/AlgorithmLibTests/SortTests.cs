@@ -22,8 +22,8 @@ namespace AlgorithmTests
         readonly List<int> items = new List<int>();
         readonly int Count = 10000;
 
-
         #region TestsInit
+
         [TestInitialize]
         public void Init()
         {
@@ -32,8 +32,8 @@ namespace AlgorithmTests
             {
                 items.Add(rnd.Next(0, 10));
             }
-
         }
+
         #endregion
 
         #region Tests

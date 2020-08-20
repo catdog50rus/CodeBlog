@@ -7,7 +7,7 @@ namespace AlgorithmLib.RadixSort
     /// Реализация по-разрядной сортировки
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class RadixSortLSD<T> : RadixSort<T> where T : IComparable
+    public class RadixSortLSD<T> : BaseRadixSort<T> where T : IComparable
     {
         public RadixSortLSD() { }
         public RadixSortLSD(IEnumerable<T> items) : base(items) { }

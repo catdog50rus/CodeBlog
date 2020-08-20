@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AlgorithmLib.Model;
 using ConsoleAppData.BinaryHeap.Heap;
-using AlgorithmLib.Model;
+using System;
+using System.Collections.Generic;
 
 namespace AlgorithmLib.BinHeapSort
 {

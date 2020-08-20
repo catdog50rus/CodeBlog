@@ -10,14 +10,14 @@ namespace AlgorithmLib.RadixSort
     /// начиная с младшего разряда и начиная со старшего разряда
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class RadixSort<T> : AlgorithmBase<T> where T : IComparable
+    public abstract class BaseRadixSort<T> : AlgorithmBase<T> where T : IComparable
     {
         /// <summary>
         /// Лист очередей, включающий элементы коллекции по разряду
         /// </summary>
         protected List<Queue<T>> groups;
 
-        public RadixSort() : base()
+        public BaseRadixSort() : base()
         {
             //Создаем и инициализируем коллекцию очередей по цифре разряда
             groups = new List<Queue<T>>();
@@ -26,7 +26,7 @@ namespace AlgorithmLib.RadixSort
                 groups.Add(new Queue<T>());
             }
         }
-        public RadixSort(IEnumerable<T> items) : base(items)
+        public BaseRadixSort(IEnumerable<T> items) : base(items)
         {
             
         }
