@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using AlgorithmLib.GnomeSort;
 using AlgorithmLib.MergeSort;
+using AlgorithmLib.QuickSort;
 
 namespace AlgorithmTests
 {
@@ -30,7 +31,7 @@ namespace AlgorithmTests
             items.Clear();
             for (int i = 0; i < Count; i++)
             {
-                items.Add(rnd.Next(0, 10));
+                items.Add(rnd.Next(0, 1000));
             }
         }
 
@@ -39,7 +40,7 @@ namespace AlgorithmTests
         #region Tests
 
 
-        //[TestMethod()]
+        [TestMethod()]
         public void InsertSortTest()
         {
             //Act
@@ -55,7 +56,7 @@ namespace AlgorithmTests
             }
         }
 
-        //[TestMethod()]
+        [TestMethod()]
         public void CocktailSortTest()
         {
 
@@ -72,7 +73,7 @@ namespace AlgorithmTests
             }
         }
 
-        //[TestMethod()]
+        [TestMethod()]
         public void BubbleSortTest()
         {
 
@@ -106,7 +107,7 @@ namespace AlgorithmTests
             }
         }
 
-        //[TestMethod()]
+        [TestMethod()]
         public void BinTreeSearchSortTest()
         {
 
@@ -157,7 +158,7 @@ namespace AlgorithmTests
             }
         }
 
-        //[TestMethod()]
+        [TestMethod()]
         public void SelectionSortTest()
         {
 
@@ -174,7 +175,7 @@ namespace AlgorithmTests
             }
         }
         
-        //[TestMethod()]
+        [TestMethod()]
         public void GnomeSortTest()
         {
 
@@ -239,6 +240,23 @@ namespace AlgorithmTests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(items[i], merge.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void QuickeSortTest()
+        {
+
+            //Act
+            var quick = new QuickSort<int>();
+            quick.Items.AddRange(items);
+            quick.Sort();
+            items.Sort();
+
+            //Assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(items[i], quick.Items[i]);
             }
         }
 
